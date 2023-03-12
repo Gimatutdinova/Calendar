@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="conteiner">
+        <div class="calendar">
+            <div class="c-wrapper">
+                <button id="btnPrev"></button>
+                <button id="btnNext"></button>
+                <div id="divCal">
+                </div>
+            </div>  
+            
+            <div class="e-wrapper">
+                <div id="divEv">
+                </div>
+            </div>   
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-table">
+            <div class="modal-table-cell">
+                <form class="modal__form">
+                    <div class="modal__close"></div>
+                    <div class="modal__header">Запись</div>
+                    <div class="modal__content">
+                        <p class="modal__item">
+                            <label for="name">Имя
+                                <span class="required">*</span>
+                            </label>
+                            <input required class="modal__control" id="name" type="text" name="Имя" placeholder="Имя">
+                        </p>
+                        <p class="modal__item">
+                            <label for="surname">Фамилия
+                                <span class="required">*</span>
+                            </label>
+                            <input required class="modal__control" id="surname" type="text" name="Фамилия" placeholder="Фамилия">
+                        </p>
+                        <p class="modal__item">
+                            <label for="phone">Телефон
+                                <span class="required">*</span>
+                            </label>
+                            <input required class="modal__control" id="phone" type="tel" name="Телефон" placeholder="Телефон">
+                        </p>
+                        <p class="modal__item">
+                            <label for="email">Email</label>
+                            <input class="modal__control" id="email" type="email" name="Email" placeholder="Email">
+                        </p>
+                        <p class="modal__item">
+                            <label for="organization">Организация</label>
+                            <input class="modal__control" type="text" name="Организация" placeholder="Организация">
+                        </p>
+                        <p class="modal__item">
+                            <label for="approval">
+                                <input class="modal__control" required type="checkbox">
+                                <p class="modal__approval">Я согласен с условиями Лицензионного соглашения и даю согласие на обработку моих персональных данных.</p>
+                             </label>      
+                        </p>
+                        <button class="modal__btn" type="submit" name="submit">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,642 @@
+@import "scss/_common";
+
+.calendar {
+    display: flex;
+    align-items: center;
+}
+
+.c-wrapper {
+    position: relative;
+    margin: 20px;
+	width: 60%;
+    border: 2px $border solid;
+    border-radius: 5px;
+    background: $white;
+}
+
+table {
+    margin: 0 auto 10px;
+	width: 95%;
+    height: 40vw;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.normal,
+.today,
+.not-current {
+    position: relative;
+	text-align: start;
+    vertical-align: top;
+    padding: 10px 5px 0 10px;
+	font-size: 1.5em;
+    border: 1px $border solid;
+    background: none;
+
+    overflow: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 2px;
+        height: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $days;
+        border-radius: 10px;
+    }
+
+    &._active {
+        overflow: visible;
+    }
+}
+
+thead td {
+    padding: 10px 0;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 30px;
+    border: none;
+}
+
+tr.days {
+    height: 30px;
+    border: 1px $border solid;
+	background-color: $days;
+}
+
+tr.days > td {
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.5em;
+	border: none;
+}
+
+td.today {
+    background: $event;
+}
+
+.not-current {
+    opacity: 0.5;
+
+    &._active {
+        opacity: 1;
+    }
+}
+
+#btnPrev {
+	float: left;
+    transform: rotate(-45deg);
+}
+
+#btnNext {
+	right: 0;
+    transform: rotate(135deg);
+}
+
+#btnPrev,
+#btnNext {
+    position: absolute;
+    content: '';
+    margin: 20px;
+    width: 10px;
+    height: 10px;
+	border-top: 1px $border solid;
+    border-left: 1px $border solid;
+	cursor: pointer;
+    background: none;
+    transition: 0.3s ease 0s;
+
+    z-index: 5;
+    &:hover {
+        width: 12px;
+        height: 12px;
+        border-width: 2px;
+        border-color: $border;
+        transition: 0.2s ease;
+    }
+}
+
+.day_info {
+    position: absolute;
+    padding-left: 3px;
+    width: 85%;
+    height: auto;
+
+    font-size: 0.7em;
+    background: $event;
+    border-left: 2px $border solid;
+    border-radius: 5px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+
+
+    &._active {
+        width: 196%;
+        margin-left: -8px;
+
+        font-size: 0.8em;
+        font-weight: bold;
+        text-align: center;
+        border: 2px $border solid;
+        white-space: normal;
+        overflow: visible;
+        z-index: 5;
+        transition: all 0.2s;
+    }
+}
+
+[id*="-0"] {
+    margin-top: 5px;
+}
+
+[id*="-1"] {
+    margin-top: 25px;
+}
+
+[id*="-2"] {
+    margin-top: 45px;
+}
+
+[id*="-3"] {
+    margin-top: 65px;
+}
+
+.event {
+
+    &_info {
+        display: none;
+        position: absolute;
+        width: 196%;
+        margin-left: -8px;
+        padding: 0 5px;
+
+        font-size: 0.7em;
+        color: $brown;
+        text-align: center;
+        border: 2px $border solid;
+        border-radius: 5px;
+        background: $white;
+        z-index: 4;
+        
+
+        &._active {
+            display: block!important;
+        }
+    }
+
+    &_days {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    &_cal {
+        width: 2vw;
+        height: 2vw;
+        margin-right: 10px;
+    }
+
+    &_day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &_btn {
+        width: 60%;
+        margin: 10px 0;
+        background: $event;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: all 0.3s;
+
+        &:hover {
+            width: 95%;
+            transition: all 0.3s;
+        }
+    }
+
+    &_user {
+        display: inline-block;
+        margin: 10px 5px;
+        width: 15px;
+        height: 15px;
+    }
+
+    &_organizator {
+        display: inline-block;
+        margin: 10px 5px;
+        height: 15px;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: ($md1 + 'px')) and (max-width: (1400px)) {
+    .day_info {
+        &._active {
+            font-size: 0.7em;
+        }
+    }
+}
+
+@media screen and (max-width: ($md2 + 'px')) {
+    .day_info {
+        &._active {
+            font-size: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: (650px)) {
+    .day_info {
+        width: 10px;
+        height: 10px;
+        border: none;
+        color: $event;
+
+        &._active {
+            height: auto;
+            font-size: 0.7em;
+            color: $brown;
+        }
+    }
+}
+
+@media screen and (max-width: (530px)) {
+    .day_info {
+        margin: 0;
+    }
+
+    .event {
+
+        &_info {
+            display: none;
+            position: absolute;
+            width: 196%;
+            margin: 8px 0 0 -8px;
+    
+            font-size: 0.7em;
+            color: $brown;
+            text-align: center;
+            border: 2px $border solid;
+            border-radius: 5px;
+            background: $white;
+            z-index: 4;
+            
+    
+            &._active {
+                display: block!important;
+            }
+        }
+    
+        &_days {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        &_cal {
+            display: none;
+        }
+    
+        &_day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        &_btn {
+            width: 60%;
+            margin: 10px 0;
+            background: $event;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: all 0.3s;
+    
+            &:hover {
+                width: 95%;
+                transition: all 0.3s;
+            }
+        }
+    
+        &_user {
+            display: inline-block;
+            margin: 10px 5px;
+            width: 15px;
+            height: 15px;
+        }
+    
+        &_organizator {
+            display: inline-block;
+            margin: 10px 5px;
+            height: 15px;
+            vertical-align: middle;
+        }
+    }
+}
+
+// Список мероприятий
+
+.e-wrapper {
+    position: relative;
+    margin: 20px;
+    padding: 20px;
+	width: 40%;
+    height: 40vw;
+    border: 2px $border solid;
+    border-radius: 5px;
+    background: $white;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $days;
+        border-radius: 10px;
+    }
+}
+
+.list {
+    
+    &__events {
+        width: 100%;  
+    }
+
+    &_info {
+        margin: 10px 0;
+        width: 100%;
+        height: 100;
+        padding: 10px;
+        background: $event;
+        border: 2px $border solid;
+        border-radius: 5px;
+    }
+
+    &_title {
+        margin: 0;
+        width: 23vw;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    &_days {
+        display: flex;
+        flex-wrap: wrap;
+
+        margin: 5px 0;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    &_date {
+        padding: 0 10px;
+    }
+
+    &_btn {
+        position: absolute;
+        right: 0;
+        margin-right: 30px;
+        width: 20%;
+
+        background: $days;
+        border-radius: 5px;
+        font-size: 15px;
+        transition: all 0.3s;
+
+        &:hover {
+            width: 30%;
+            transition: all 0.3s;
+        }
+    }
+
+    &_text {
+        margin: 5px 0;
+        font-size: 1em;
+        text-align: justify;
+        text-indent: 15px
+    }
+    
+    &_cal {
+        width: 15px;
+        height: 15px;
+    }
+
+    &_user {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+    }
+
+    &_organizator {
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: ($md1 + 'px')) {
+    .list {
+
+        &_title {
+            width: 50vw;
+            font-size: 1.8em;
+        }
+    
+        &_days {
+            font-size: 1.2em;
+        }
+    }
+}
+
+// Модальное окно
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 999;
+    transition: .4s all;
+
+    &._visible {
+        opacity: 1;
+        visibility: visible;
+
+        & .modal__form {
+            transform: translate(0);
+        }
+    }
+
+    &-table {
+        display: table;
+        width: 100%;
+        height: 100%;
+
+        &-cell {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0;
+        }
+    }
+
+    &__form {
+        display: inline-block;
+        position: relative;
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+ 
+        color: $black;
+        text-align: left;
+
+        background: $white;
+        box-shadow: 0px 0px 20px $border;
+        border-radius: 5px;
+        border: 2px $border solid;
+
+        transition: all .4s;
+        transform: translate(0, 20%);
+    }
+
+    &__close {
+        position: absolute;
+        margin-top: 5px;
+        right: 10px;
+        width: 25px;
+        height: 2px;
+        transition: .4s all;
+
+        &:hover {
+            width: 30px;
+        }
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: block;
+            margin: auto;
+ 
+            background: $border;
+            transform: rotate(45deg);
+        }
+         
+        &:after {
+            transform: rotate(-45deg);
+        }
+    }
+
+    &__header {
+        margin-bottom: 20px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    &__content label {
+        position: absolute;
+        margin: -8px 0 0 10px;
+        padding: 0 5px;
+        background: $white;
+    }
+
+    &__item {
+        position: relative;
+        margin: 15px 10px;
+    }
+     
+    &__control {
+        display: block;
+        
+        padding: 8px 0 0 25px;
+        width: 100%;
+        height: 40px;     
+        
+        border: 1px $border solid;
+        border-radius: 5px;
+    }
+
+    &__approval {
+        margin: 0 15px 0 50px;
+        font-size: 12px;
+    }
+
+    &__btn {
+        width: 100%;
+        height: 40px;
+        margin-top: 20px;
+        background: $event;
+        border: 2px $border solid;
+        border-radius: 5px;
+        transition: all .4s;
+
+        &:hover {
+            font-size: 1.2vw;
+            box-shadow: 0px 0px 20px $border;
+            transition: all .4s;
+        }
+    }
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+}
+ 
+.required {
+    color: $border;
+}
+
+@media screen and (max-width: ($md1 + 'px')) {
+    .calendar {
+        flex-direction: column;
+    }
+    
+    .c-wrapper {
+        width: 95%;
+    }
+
+    table {
+        height: 60vw;
+    }
+
+    .e-wrapper {
+        width: 95%;
+    }
+}
+
+
+@media screen and (max-width: (650px)) {
+    .e-wrapper {
+        height: 37vh;
+    }
+}

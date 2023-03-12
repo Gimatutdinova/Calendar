@@ -1,0 +1,44 @@
+  // Обнуление стилей
+  @import "_nullstyle";
+  // Обнуление стилей_____________________
+
+  // Переменные
+$maxWidthConteiner: 1240;
+$md: $maxWidthConteiner + 30;
+$md1: 991;
+$md2: 780;
+$md3: 479;
+
+$black: #0B0A0D;
+$white: #FFFFFF;
+$grey: #e6e4e4;
+$brown: #584404;
+$border: #9a7808;
+$days: #b08909;
+$event: #eed585;
+  // Переменные___________________________
+
+  // Шаблоны  
+  // Шаблоны______________________________
+
+  // Миксины
+  // Миксины______________________________
+
+
+
+body { 
+    font-size: 14px;
+    color: $brown;
+    background: $brown;
+}
+
+.conteiner {
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media screen and (max-width: ($md1 + 'px')) {
+  body { 
+    font-size: 12px;
+  }
+}
